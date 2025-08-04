@@ -5,11 +5,11 @@ Plugin URI: https://www.civicuk.com/cookie-control
 Tags: cookie, cookies, cookie legislation, eu cookie law, GDPR
 Author URI: https://www.civicuk.com
 Author: Civicuk
-Requires at least: 3.0
-Tested up to: 6.5.2
-Requires PHP: 5.6
-Stable tag: 1.52
-Version: 1.52
+Requires at least: 5.3
+Tested up to: 6.8.2
+Requires PHP: 7.4
+Stable tag: 1.53
+Version: 1.53
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,10 @@ Read more about this pattern here https://design-system.dwp.gov.uk/patterns/cons
 The shortcode [ccc_gov_uk_block] builds a form with all cookie category configured so that users can change their consent.  You can add the parameter layout="single" to display all categories in one form, ex. [ccc_gov_uk_block layout="single"]
 
 == Changelog ==
+= 1.53 =
+* Tested up to WordPress 6.8.2.
+* Requires PHP 7.4 or higher.
+
 = 1.52 =
 * Integration with the WP Consent API plugin.
 

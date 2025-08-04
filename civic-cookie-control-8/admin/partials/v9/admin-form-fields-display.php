@@ -87,7 +87,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
             $active_cookie_tab = $ccc_options['iabCMP'] == "true" && $ccc_options['initialState'] != "GOVUK" ? 'ui-tabs-active ui-state-active' : '';
             $hide_govuk_content = $ccc_options['initialState'] == "GOVUK" ? ' govuk-hide-element-hide' : '';
             $show_govuk_content = $ccc_options['initialState'] == "GOVUK" ? ' govuk-hide-element-show' : '';
-        
+
             ?>
 
             <input type="hidden" name="cookiecontrol_settings[apiValid]" id="cookiecontrol_settings[apiValid]" value="<?php echo (!empty($ccc_options['apiKey']) ? $ccc_valid_Api_field : ''); ?>">
@@ -205,13 +205,13 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                     </td>
                 </tr>
                 <tr class="<?php echo  $hidden_content_all; ?>">
-                  <th scope="row">
-                    <label for="cookiecontrol_settings[wrapInnerHTML]"><?php _e('Wrap Inner HTML', 'cookie-control'); ?></label>
-                  </th>
-                  <td>
-                    <input type="radio" class="first" name="cookiecontrol_settings[wrapInnerHTML]" id="cookiecontrol_settings[wrapInnerHTML]" value="true" <?php checked('true', (isset($ccc_options['wrapInnerHTML']) ? $ccc_options['wrapInnerHTML'] : $ccc_cookiecontrol_settings_defaults_ins['wrapInnerHTML'])); ?> /><?php _e('True', 'cookie-control'); ?>
-                    <input type="radio" name="cookiecontrol_settings[wrapInnerHTML]" id="cookiecontrol_settings[wrapInnerHTML]" value="false" <?php checked('false', (isset($ccc_options['wrapInnerHTML']) ? $ccc_options['wrapInnerHTML'] : $ccc_cookiecontrol_settings_defaults_ins['wrapInnerHTML'])); ?> /><?php _e('False', 'cookie-control'); ?>
-                  </td>
+                    <th scope="row">
+                        <label for="cookiecontrol_settings[wrapInnerHTML]"><?php _e('Wrap Inner HTML', 'cookie-control'); ?></label>
+                    </th>
+                    <td>
+                        <input type="radio" class="first" name="cookiecontrol_settings[wrapInnerHTML]" id="cookiecontrol_settings[wrapInnerHTML]" value="true" <?php checked('true', (isset($ccc_options['wrapInnerHTML']) ? $ccc_options['wrapInnerHTML'] : $ccc_cookiecontrol_settings_defaults_ins['wrapInnerHTML'])); ?> /><?php _e('True', 'cookie-control'); ?>
+                        <input type="radio" name="cookiecontrol_settings[wrapInnerHTML]" id="cookiecontrol_settings[wrapInnerHTML]" value="false" <?php checked('false', (isset($ccc_options['wrapInnerHTML']) ? $ccc_options['wrapInnerHTML'] : $ccc_cookiecontrol_settings_defaults_ins['wrapInnerHTML'])); ?> /><?php _e('False', 'cookie-control'); ?>
+                    </td>
                 </tr>
             </table>
 
@@ -255,14 +255,14 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                         <?php
                         // Check if WP Consent API is active
                         if (defined('WP_CONSENT_API_VERSION')): ?>
-                        <div class="info">
-                            <div class="dashicons dashicons-info-outline"><span class="screen-reader-text"><?php _e('information', 'cookie-control'); ?></span></div>
-                            <?php _e('WP Consent API is active. You can set consent foreach of the 5 categories (functional, statistics-anonymous, statistics, preferences, marketing) by adding the following onAccept and onRevoke callbak for each category.', 'cookie-control'); ?>
-                            <p><?php _e('On accept callback function (replace statistics with the right category)', 'cookie-control'); ?></p>
-                            <pre>wp_set_consent('statistics', 'allow');</pre>
-                            <p><?php _e('On revoke callback function (replace statistics with the right category)', 'cookie-control'); ?></p>
-                            <pre>wp_set_consent('statistics', 'deny');</pre>
-                        </div>
+                            <div class="info">
+                                <div class="dashicons dashicons-info-outline"><span class="screen-reader-text"><?php _e('information', 'cookie-control'); ?></span></div>
+                                <?php _e('WP Consent API is active. You can set consent foreach of the 5 categories (functional, statistics-anonymous, statistics, preferences, marketing) by adding the following onAccept and onRevoke callbak for each category.', 'cookie-control'); ?>
+                                <p><?php _e('On accept callback function (replace statistics with the right category)', 'cookie-control'); ?></p>
+                                <pre>wp_set_consent('statistics', 'allow');</pre>
+                                <p><?php _e('On revoke callback function (replace statistics with the right category)', 'cookie-control'); ?></p>
+                                <pre>wp_set_consent('statistics', 'deny');</pre>
+                            </div>
                         <?php endif; ?>
 
                         <div class="optionalCookiesTemplate">
@@ -1255,7 +1255,7 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                                     <label for="cookiecontrol_settings[govUkacceptMessage]"><?php _e('GOVUK Accept message', 'cookie-control'); ?></label>
                                 </th>
                                 <td>
-                                <?php !empty($ccc_options['govUkacceptMessage']) ?  wp_editor(stripslashes($ccc_options['govUkacceptMessage']), 'cookiecontrol_settings_govUkacceptMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkacceptMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))): wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkacceptMessage']), 'cookiecontrol_settings_govUkacceptMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkacceptMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
+                                    <?php !empty($ccc_options['govUkacceptMessage']) ?  wp_editor(stripslashes($ccc_options['govUkacceptMessage']), 'cookiecontrol_settings_govUkacceptMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkacceptMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))) : wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkacceptMessage']), 'cookiecontrol_settings_govUkacceptMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkacceptMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
                                 </td>
                             </tr>
                             <tr class="ccc-hdden govuk-show-element table-row <?php echo $show_govuk_content;  ?>">
@@ -1263,7 +1263,7 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                                     <label for="cookiecontrol_settings[govUkrejectMessage]"><?php _e('GOVUK reject message', 'cookie-control'); ?></label>
                                 </th>
                                 <td>
-                                    <?php !empty($ccc_options['govUkrejectMessage']) ?  wp_editor(stripslashes($ccc_options['govUkrejectMessage']), 'cookiecontrol_settings_govUkrejectMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkrejectMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))): wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkrejectMessage']), 'cookiecontrol_settings_govUkrejectMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkrejectMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
+                                    <?php !empty($ccc_options['govUkrejectMessage']) ?  wp_editor(stripslashes($ccc_options['govUkrejectMessage']), 'cookiecontrol_settings_govUkrejectMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkrejectMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))) : wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkrejectMessage']), 'cookiecontrol_settings_govUkrejectMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkrejectMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
                                 </td>
                             </tr>
                             <tr class="ccc-hdden govuk-show-element table-row <?php echo $show_govuk_content; ?>">
@@ -1271,7 +1271,7 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                                     <label for="cookiecontrol_settings[govUkFormSuccessMessage]"><?php _e('GOVUK cookies Form success message after save', 'cookie-control'); ?></label>
                                 </th>
                                 <td>
-                                <?php !empty($ccc_options['govUkFormSuccessMessage']) ?  wp_editor(stripslashes($ccc_options['govUkFormSuccessMessage']), 'cookiecontrol_settings_govUkFormSuccessMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormSuccessMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))):wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkFormSuccessMessage']), 'cookiecontrol_settings_govUkFormSuccessMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormSuccessMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
+                                    <?php !empty($ccc_options['govUkFormSuccessMessage']) ?  wp_editor(stripslashes($ccc_options['govUkFormSuccessMessage']), 'cookiecontrol_settings_govUkFormSuccessMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormSuccessMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))) : wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkFormSuccessMessage']), 'cookiecontrol_settings_govUkFormSuccessMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormSuccessMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
                                 </td>
                             </tr>
                             <tr class="ccc-hdden govuk-show-element table-row <?php echo $show_govuk_content; ?>">
@@ -1287,7 +1287,7 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                                     <label for="cookiecontrol_settings[govUkFormNecessaryMessage]"><?php _e('GOVUK cookies Form strictly necessary cookies Message', 'cookie-control'); ?></label>
                                 </th>
                                 <td>
-                                <?php !empty($ccc_options['govUkFormNecessaryMessage']) ?  wp_editor(stripslashes($ccc_options['govUkFormNecessaryMessage']), 'cookiecontrol_settings_govUkFormNecessaryMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormNecessaryMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))):wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkFormNecessaryMessage']), 'cookiecontrol_settings_govUkFormNecessaryMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormNecessaryMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
+                                    <?php !empty($ccc_options['govUkFormNecessaryMessage']) ?  wp_editor(stripslashes($ccc_options['govUkFormNecessaryMessage']), 'cookiecontrol_settings_govUkFormNecessaryMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormNecessaryMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))) : wp_editor(stripslashes($ccc_cookiecontrol_settings_defaults_ins['govUkFormNecessaryMessage']), 'cookiecontrol_settings_govUkFormNecessaryMessage',  $settings = array('media_buttons' => false, 'textarea_name' => 'cookiecontrol_settings[govUkFormNecessaryMessage]', 'tinymce' => false, 'quicktags' => array("buttons" => "strong,em,ul,ol,li,link"))); ?>
                                 </td>
                             </tr>
                             <tr class="govuk-hide-element <?php echo $hide_govuk_content; ?>">
@@ -1505,7 +1505,7 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                                     <label for="cookiecontrol_settings[buttonIcon]"><?php _e('Button Icon (url)', 'cookie-control'); ?></label>
                                 </th>
                                 <td>
-                                    <input type="text" name="cookiecontrol_settings[buttonIcon]" id="cookiecontrol_settings[buttonIcon]" value="<?php echo esc_html(stripslashes($ccc_options['buttonIcon'])); ?>" size="50" />
+                                    <input type="text" name="cookiecontrol_settings[buttonIcon]" id="cookiecontrol_settings[buttonIcon]" value="<?php echo isset($ccc_options['buttonIcon']) ? esc_html(stripslashes($ccc_options['buttonIcon'])) : ''; ?>" size="50" />
                                 </td>
                             </tr>
                             <tr>
