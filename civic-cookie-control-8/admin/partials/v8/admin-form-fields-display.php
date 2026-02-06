@@ -69,16 +69,18 @@ if (get_option($this->plugin_name)) {
     </div>
 
     <div class="wrap">
-        <?php if (isset($_POST["delete_old_option"])) {
+        <?php
+        if (isset($_POST["delete_old_option"]) && current_user_can('manage_options') && isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'ccc_delete_old_option')) {
             delete_option('cookiecontrol_settings');
         }
         if (get_option($this->plugin_name) &&  get_option('cookiecontrol_settings')) { ?>
 
             <form method="post" action="#" id="form-delete-old-option">
+                <?php wp_nonce_field('ccc_delete_old_option'); ?>
                 <div class="warning warning--delete-option">
                     <div class="dashicons dashicons-warning"><span class="screen-reader-text"><?php _e('warning', 'cookie-control'); ?></span></div>
                     <?php _e('Delete old option "cookiecontrol_settings" from database ( your current settings will not be lost )', "cookie-control"); ?>
-                    <input type="submit" class="button-primary" value="<?php _e('Delete') ?>" name="delete_old_option">
+                    <input type="submit" class="button-primary" value="<?php esc_attr_e('Delete') ?>" name="delete_old_option">
                 </div>
             </form>
 
@@ -427,10 +429,10 @@ if (get_option($this->plugin_name)) {
                                 $ccc_var_update = "";
                                 foreach ($ccc_options['optionalCookiesName'] as $key => $val) :  ?>
                                     <?php if (trim($val) != '') : ?>
-                                        <div class="optionalCookies ccc-accordion-inside data-number" data-number="<?php echo $key; ?>">
+                                        <div class="optionalCookies ccc-accordion-inside data-number" data-number="<?php echo esc_attr($key); ?>">
                                             <div class="ccc-title-group">
                                                 <div class="ccc-title">
-                                                    <h3><?php _e('Cookie Category', 'cookie-control'); ?> <span>1</span> <?php echo !empty($ccc_options['optionalCookiesLabel'][$key]) ? '(' . $ccc_options['optionalCookiesLabel'][$key] . ')' : ''; ?> <i>+</i></h3>
+                                                    <h3><?php _e('Cookie Category', 'cookie-control'); ?> <span>1</span> <?php echo !empty($ccc_options['optionalCookiesLabel'][$key]) ? '(' . esc_html(stripslashes($ccc_options['optionalCookiesLabel'][$key])) . ')' : ''; ?> <i>+</i></h3>
                                                 </div>
                                                 <a href="#" class="remove removeCookieCategory" data-class="optionalCookies" id="removeoptionalCookies">
                                                     <div class="dashicons dashicons-dismiss"><span class="screen-reader-text"><?php _e('Remove', 'cookie-control'); ?></span></div>
@@ -1645,10 +1647,10 @@ if (get_option($this->plugin_name)) {
             } elseif (get_option('cookiecontrol_settings')) { // check if option cookiecontrol_settings exists , for backward compatibility
                 $ccc_options = get_option('cookiecontrol_settings');
             } ?>
-            <input type="hidden" name="cookiecontrol_settings[apiKey]" value="<?php echo isset($ccc_options['apiKey']) ?  $ccc_options['apiKey'] : ""; ?>" />
-            <input type="hidden" name="cookiecontrol_settings_api_key_version" value="<?php echo isset($ccc_options_apikey_version) ?  $ccc_options_apikey_version : ''  ?>" />
+            <input type="hidden" name="cookiecontrol_settings[apiKey]" value="<?php echo isset($ccc_options['apiKey']) ? esc_attr($ccc_options['apiKey']) : ''; ?>" />
+            <input type="hidden" name="cookiecontrol_settings_api_key_version" value="<?php echo isset($ccc_options_apikey_version) ? esc_attr($ccc_options_apikey_version) : ''; ?>" />
             <?php foreach ((array)$ccc_cookiecontrol_defaults as $key => $value) : ?>
-                <input type="hidden" name="cookiecontrol_settings[<?php echo $key; ?>]" value="<?php echo $value; ?>" />
+                <input type="hidden" name="cookiecontrol_settings[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($value); ?>" />
             <?php endforeach; ?>
             <input type="hidden" name="cookiecontrol_settings[update]" value="RESET" />
             <input type="hidden" id="ccc_save_form_submit" name="ccc_form_submit" value="v8">

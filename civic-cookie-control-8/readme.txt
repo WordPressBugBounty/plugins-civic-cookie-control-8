@@ -6,10 +6,10 @@ Tags: cookie, cookies, cookie legislation, eu cookie law, GDPR
 Author URI: https://www.civicuk.com
 Author: Civicuk
 Requires at least: 5.3
-Tested up to: 6.8.2
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.53
-Version: 1.53
+Stable tag: 1.54
+Version: 1.54
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ There are several license types available, including:
 
 **Multisite Pro Edition** - Offers all of the pro features for use on up to ten websites, priority support and updates during your subscription.
 
-**Pro edition** and **Multisite Pro Edition** support IAB (TCF v2.0).
+**Pro edition** and **Multisite Pro Edition** support IAB (TCF v2.2).
 
 To find out more about Cookie Control please visit [Civic's Cookie Control home page](https://www.civicuk.com/cookie-control).
 
@@ -84,7 +84,7 @@ It is your responsibility as a webmaster to know what cookies your site sets, wh
 
 = I'm getting an error message Cookie Control isn't working? =
 
-Support for Cookie Control is available via the forum: [https://groups.google.com/forum/#!forum/cookiecontrol](https://groups.google.com/forum/#!forum/cookiecontrol/) or open a support ticket in [Support](https://www.civicuk.com/support)
+If you have technical issues, you can visit our [Documentation and Support](https://www.civicuk.com/cookie-control/documentation) or open a support ticket in [Support](https://www.civicuk.com/cookie-control/contact?form=support).
 
 = Update from previous version =
 
@@ -98,6 +98,10 @@ Read more about this pattern here https://design-system.dwp.gov.uk/patterns/cons
 The shortcode [ccc_gov_uk_block] builds a form with all cookie category configured so that users can change their consent.  You can add the parameter layout="single" to display all categories in one form, ex. [ccc_gov_uk_block layout="single"]
 
 == Changelog ==
+= 1.54 =
+* Security improvements.
+* Tested up to WordPress 6.9.
+
 = 1.53 =
 * Tested up to WordPress 6.8.2.
 * Requires PHP 7.4 or higher.

@@ -435,10 +435,10 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                 $ccc_var_update = "";
                                 foreach ($ccc_options['optionalCookiesName'] as $key => $val) :  ?>
                                     <?php if (trim($val) != '') : ?>
-                                        <div class="optionalCookies ccc-accordion-inside data-number" data-number="<?php echo $key; ?>">
+                                        <div class="optionalCookies ccc-accordion-inside data-number" data-number="<?php echo esc_attr($key); ?>">
                                             <div class="ccc-title-group">
                                                 <div class="ccc-title">
-                                                    <h3><?php _e('Cookie Category', 'cookie-control'); ?> <span>1</span> <?php echo !empty($ccc_options['optionalCookiesLabel'][$key]) ? '(' . $ccc_options['optionalCookiesLabel'][$key] . ')' : ''; ?> <i>+</i></h3>
+                                                    <h3><?php _e('Cookie Category', 'cookie-control'); ?> <span>1</span> <?php echo !empty($ccc_options['optionalCookiesLabel'][$key]) ? '(' . esc_html(stripslashes($ccc_options['optionalCookiesLabel'][$key])) . ')' : ''; ?> <i>+</i></h3>
                                                 </div>
                                                 <a href="#" class="remove removeCookieCategory" data-class="optionalCookies" id="removeoptionalCookies">
                                                     <div class="dashicons dashicons-dismiss"><span class="screen-reader-text"><?php _e('Remove', 'cookie-control'); ?></span></div>
@@ -454,7 +454,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                             <p><?php _e('A unique identifier for the category, that the module will use to set an acceptance cookie for when user\'s opt in.', 'cookie-control'); ?></p>
                                                         </th>
                                                         <td>
-                                                            <input required type="text" name="cookiecontrol_settings[optionalCookiesName][<?php echo $key ?>]" data-name="<?php echo $val; ?>" id="cookiecontrol_settings[optionalCookiesName][<?php echo $key ?>]" value="<?php echo esc_html(stripslashes($val)); ?>" size="50" />
+                                                            <input required type="text" name="cookiecontrol_settings[optionalCookiesName][<?php echo esc_attr($key) ?>]" data-name="<?php echo esc_attr($val); ?>" id="cookiecontrol_settings[optionalCookiesName][<?php echo esc_attr($key) ?>]" value="<?php echo esc_attr(stripslashes($val)); ?>" size="50" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -472,7 +472,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                             <p><?php _e('The full description assigned to the category and displayed by the module.', 'cookie-control'); ?></p>
                                                         </th>
                                                         <td>
-                                                            <input type="text" name="cookiecontrol_settings[optionalCookiesDescription][<?php echo $key ?>]" id="cookiecontrol_settings[optionalCookiesDescription][<?php echo $key ?>]" value="<?php echo stripslashes($ccc_options['optionalCookiesDescription'][$key]); ?>" size="50" />
+                                                            <input type="text" name="cookiecontrol_settings[optionalCookiesDescription][<?php echo esc_attr($key) ?>]" id="cookiecontrol_settings[optionalCookiesDescription][<?php echo esc_attr($key) ?>]" value="<?php echo esc_attr(stripslashes($ccc_options['optionalCookiesDescription'][$key])); ?>" size="50" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -498,7 +498,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                                 <?php if ($ccc_options['optionalCookiesthirdPartyCookies'][$key]) { ?>
                                                                     <div class="warning">
                                                                         <div class="dashicons dashicons-warning"><span class="screen-reader-text"><?php _e('warning', 'cookie-control'); ?></span></div>
-                                                                        <?php _e('You may have to re assign the third party cookies inside each category. Your Previous Object was :', 'cookie-control'); ?> <br> <?php echo stripslashes($ccc_options['optionalCookiesthirdPartyCookies'][$key]); ?>
+                                                                        <?php _e('You may have to re assign the third party cookies inside each category. Your Previous Object was :', 'cookie-control'); ?> <br> <?php echo esc_html(stripslashes($ccc_options['optionalCookiesthirdPartyCookies'][$key])); ?>
                                                                     </div>
                                                                 <?php  } ?>
                                                             <?php } ?>
@@ -601,10 +601,10 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                         </th>
                                                         <td>
                                                             <div class="categoryVendor categoryVendor-down categoryVendorVal data-number data-number-pre">
-                                                                <input type="text" name="cookiecontrol_settings[optionalCookiesVendorName][<?php echo $key ?>]" placeholder="eg. Name" id="cookiecontrol_settings[optionalCookiesVendorName][<?php echo $key ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorName'][$key]) ?   stripslashes($ccc_options['optionalCookiesVendorName'][$key]) : ""; ?>' size="50" />
+                                                                <input type="text" name="cookiecontrol_settings[optionalCookiesVendorName][<?php echo esc_attr($key) ?>]" placeholder="eg. Name" id="cookiecontrol_settings[optionalCookiesVendorName][<?php echo esc_attr($key) ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorName'][$key]) ? esc_attr(stripslashes($ccc_options['optionalCookiesVendorName'][$key])) : ""; ?>' size="50" />
                                                                 <br>
                                                                 <br>
-                                                                <input type="text" name="cookiecontrol_settings[optionalCookiesVendorDescription][<?php echo $key ?>]" placeholder="eg. Description" id="cookiecontrol_settings[optionalCookiesVendorDescription][<?php echo $key ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorDescription'][$key]) ?   stripslashes($ccc_options['optionalCookiesVendorDescription'][$key]) : ""; ?>' size="50" />
+                                                                <input type="text" name="cookiecontrol_settings[optionalCookiesVendorDescription][<?php echo esc_attr($key) ?>]" placeholder="eg. Description" id="cookiecontrol_settings[optionalCookiesVendorDescription][<?php echo esc_attr($key) ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorDescription'][$key]) ? esc_attr(stripslashes($ccc_options['optionalCookiesVendorDescription'][$key])) : ""; ?>' size="50" />
                                                                 <br>
                                                                 <br>
                                                                 <input type="text" name="cookiecontrol_settings[optionalCookiesVendorUrl][<?php echo $key ?>]" placeholder="eg. Url" id="cookiecontrol_settings[optionalCookiesVendorUrl][<?php echo $key ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorUrl'][$key]) ?   esc_url(stripslashes($ccc_options['optionalCookiesVendorUrl'][$key])) : ""; ?>' size="50" />
@@ -625,11 +625,11 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                                 foreach ($ccc_options['optionalCookiesVendorName' . $key] as $key2 => $val2) {
                                                             ?>
 
-                                                                    <div class="categoryVendor categoryVendor-down categoryVendorVal data-number data-number-pre" data-number="<?php echo $key ?>">
-                                                                        <input type="text" name="cookiecontrol_settings[optionalCookiesVendorName<?php echo $key ?>][<?php echo $key2 ?>]" placeholder="eg. Name" id="cookiecontrol_settings[optionalCookiesVendorName<?php echo $key ?>][<?php echo $key2 ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorName' . $key][$key2]) ?   stripslashes($ccc_options['optionalCookiesVendorName' . $key][$key2]) : ""; ?>' size="50" />
+                                                                    <div class="categoryVendor categoryVendor-down categoryVendorVal data-number data-number-pre" data-number="<?php echo esc_attr($key) ?>">
+                                                                        <input type="text" name="cookiecontrol_settings[optionalCookiesVendorName<?php echo esc_attr($key) ?>][<?php echo esc_attr($key2) ?>]" placeholder="eg. Name" id="cookiecontrol_settings[optionalCookiesVendorName<?php echo esc_attr($key) ?>][<?php echo esc_attr($key2) ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorName' . $key][$key2]) ? esc_attr(stripslashes($ccc_options['optionalCookiesVendorName' . $key][$key2])) : ""; ?>' size="50" />
                                                                         <br>
                                                                         <br>
-                                                                        <input type="text" name="cookiecontrol_settings[optionalCookiesVendorDescription<?php echo $key ?>][<?php echo $key2 ?>]" placeholder="eg. Description" id="cookiecontrol_settings[optionalCookiesVendorDescription<?php echo $key ?>][<?php echo $key2 ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorDescription' . $key][$key2]) ?   stripslashes($ccc_options['optionalCookiesVendorDescription' . $key][$key2]) : ""; ?>' size="50" />
+                                                                        <input type="text" name="cookiecontrol_settings[optionalCookiesVendorDescription<?php echo esc_attr($key) ?>][<?php echo esc_attr($key2) ?>]" placeholder="eg. Description" id="cookiecontrol_settings[optionalCookiesVendorDescription<?php echo esc_attr($key) ?>][<?php echo esc_attr($key2) ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorDescription' . $key][$key2]) ? esc_attr(stripslashes($ccc_options['optionalCookiesVendorDescription' . $key][$key2])) : ""; ?>' size="50" />
                                                                         <br>
                                                                         <br>
                                                                         <input type="text" name="cookiecontrol_settings[optionalCookiesVendorUrl<?php echo $key ?>][<?php echo $key2 ?>]" placeholder="eg. Url" id="cookiecontrol_settings[optionalCookiesVendorUrl<?php echo $key ?>][<?php echo $key2 ?>]" value='<?php echo isset($ccc_options['optionalCookiesVendorUrl' . $key][$key2]) ?   esc_url(stripslashes($ccc_options['optionalCookiesVendorUrl' . $key][$key2])) : ""; ?>' size="50" />
@@ -709,7 +709,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                         <label for="cookiecontrol_settings[necessaryCookies][<?php echo $key ?>]"><?php _e('Necessary Cookie', 'cookie-control'); ?></label>
                                                     </th>
                                                     <td>
-                                                        <input type="text" name="cookiecontrol_settings[necessaryCookies][<?php echo $key ?>]" id="cookiecontrol_settings[necessaryCookies][<?php echo $key ?>]" value="<?php echo stripslashes($val); ?>" size="30" />
+                                                        <input type="text" name="cookiecontrol_settings[necessaryCookies][<?php echo esc_attr($key) ?>]" id="cookiecontrol_settings[necessaryCookies][<?php echo esc_attr($key) ?>]" value="<?php echo esc_attr(stripslashes($val)); ?>" size="30" />
                                                         <a href="#" class="remove removeRow" data-class="necessaryCookies" id="removenecessaryCookies">
                                                             <div class="dashicons dashicons-dismiss"><span class="screen-reader-text"><?php _e('Remove', 'cookie-control'); ?></span></div>
                                                         </a>
@@ -2405,11 +2405,11 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                 $ccc_options = get_option($this->plugin_name);
             } ?>
 
-            <input type="hidden" name="cookiecontrol_settings[apiKey]" value="<?php echo isset($ccc_options['apiKey']) ?  $ccc_options['apiKey'] : ""; ?>" />
-            <input type="hidden" name="cookiecontrol_settings_api_key_version" value="<?php echo isset($ccc_options_apikey_version) ?  $ccc_options_apikey_version : ''  ?>" />
+            <input type="hidden" name="cookiecontrol_settings[apiKey]" value="<?php echo isset($ccc_options['apiKey']) ? esc_attr($ccc_options['apiKey']) : ''; ?>" />
+            <input type="hidden" name="cookiecontrol_settings_api_key_version" value="<?php echo isset($ccc_options_apikey_version) ? esc_attr($ccc_options_apikey_version) : ''; ?>" />
 
             <?php foreach ((array)$ccc_cookiecontrol_defaults as $key => $value) : ?>
-                <input type="hidden" name="cookiecontrol_settings[<?php echo $key; ?>]" value="<?php echo $value; ?>" />
+                <input type="hidden" name="cookiecontrol_settings[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($value); ?>" />
             <?php endforeach; ?>
             <input type="hidden" name="cookiecontrol_settings[update]" value="RESET" />
             <input type="hidden" name="ccc_form_submit" value="v9">
