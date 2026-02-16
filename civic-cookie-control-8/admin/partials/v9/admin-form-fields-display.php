@@ -195,6 +195,7 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                                                                                                                                             endif; ?> /><?php _e('False', 'cookie-control'); ?>
                     </td>
                 </tr>
+
                 <tr class="<?php echo  $hidden_content_all; ?> govuk-hide-element <?php echo $hide_govuk_content; ?>">
                     <th scope="row">
                         <label for="cookiecontrol_settings[mode]"><?php _e('Mode', 'cookie-control'); ?> <span>&#42;</span></label>
@@ -213,6 +214,8 @@ if (get_option('civic_cookiecontrol_settings_v9')) {
                         <input type="radio" name="cookiecontrol_settings[wrapInnerHTML]" id="cookiecontrol_settings[wrapInnerHTML]" value="false" <?php checked('false', (isset($ccc_options['wrapInnerHTML']) ? $ccc_options['wrapInnerHTML'] : $ccc_cookiecontrol_settings_defaults_ins['wrapInnerHTML'])); ?> /><?php _e('False', 'cookie-control'); ?>
                     </td>
                 </tr>
+
+
             </table>
 
 
@@ -944,6 +947,36 @@ Read more about this pattern here %s https://design-system.dwp.gov.uk/patterns/c
                             <tr class="description">
                                 <td colspan="2">
                                     <p><?php _e('Used in conjuction with the sameSiteCookie property, it controls the value of the SameSite flag for the CookieControl cookie. It can be one of "Strict", "Lax" or "None".', 'cookie-control'); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <label for="cookiecontrol_settings[secureCookie]"><?php _e('Secure Cookie', 'cookie-control'); ?></label>
+                                </th>
+                                <td>
+                                    <input type="radio" class="first" name="cookiecontrol_settings[secureCookie]" id="cookiecontrol_settings[secureCookie]" value="true" <?php if (isset($ccc_options['secureCookie'])) : checked('true', $ccc_options['secureCookie']);
+                                                                                                                                                                            endif; ?> /><?php _e('True', 'cookie-control'); ?>
+                                    <input type="radio" name="cookiecontrol_settings[secureCookie]" id="cookiecontrol_settings[secureCookie]" value="false" <?php if (isset($ccc_options['secureCookie'])) :  checked('false', $ccc_options['secureCookie']);
+                                                                                                                                                            else : ?> checked <?php endif; ?> /><?php _e('False', 'cookie-control'); ?>
+                                </td>
+                            </tr>
+                            <tr class="description">
+                                <td colspan="2">
+                                    <p><?php _e('Determine whether or not Cookie Control\'s own cookie will be marked as Secure.', 'cookie-control'); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <label for="cookiecontrol_settings[ccCookie]"><?php _e('Rename Cookie Control cookie', 'cookie-control'); ?></label>
+                                </th>
+                                <td>
+                                    <input type="text" name="cookiecontrol_settings[ccCookie]" id="cookiecontrol_settings[ccCookie]" value="<?php echo (isset($ccc_options['ccCookie']) ? esc_html(stripslashes($ccc_options['ccCookie'])) : ''); ?>" size="50" />
+                                </td>
+                            </tr>
+                            <tr class="description">
+                                <td colspan="2">
+                                    <p><?php _e('Rename the cookie that Cookie Control uses to store user preferences. Default is "CookieControl". Leave this field empty to keep the default name.', 'cookie-control'); ?></p>
+                                    <p><?php _e('Please note, any value can be entered into the configuration, even if it is not a valid cookie name. Cookie Control will automatically sanitise invalid names. Sanitisation includes the replacement of capital letters to lower case and the removal of whitespace. If you rely on the cookie name elsewhere, please ensure you use the final cookie name after validation.', 'cookie-control'); ?></p>
                                 </td>
                             </tr>
                             <tr class="govuk-hide-element <?php echo $hide_govuk_content; ?>">

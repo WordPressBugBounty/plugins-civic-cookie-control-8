@@ -8,8 +8,8 @@ Author: Civicuk
 Requires at least: 5.3
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.54
-Version: 1.54
+Stable tag: 1.55
+Version: 1.55
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,10 @@ Read more about this pattern here https://design-system.dwp.gov.uk/patterns/cons
 The shortcode [ccc_gov_uk_block] builds a form with all cookie category configured so that users can change their consent.  You can add the parameter layout="single" to display all categories in one form, ex. [ccc_gov_uk_block layout="single"]
 
 == Changelog ==
+= 1.55 =
+* Added ccCookie. 
+* Added secureCookie.
+
 = 1.54 =
 * Security improvements.
 * Tested up to WordPress 6.9.

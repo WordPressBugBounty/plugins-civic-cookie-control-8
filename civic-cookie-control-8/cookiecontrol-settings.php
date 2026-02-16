@@ -16,7 +16,7 @@
  * Plugin Name:       Civic Cookie Control 8
  * Plugin URI:        https://www.civicuk.com/cookie-control
  * Description:       Cookie Control 8 is a mechanism for controlling user consent for the use of cookies on their computer.
- * Version:           1.54
+ * Version:           1.55
  * Author:            Civic Uk
  * Author URI:        https://www.civicuk.com/
  * License:           GPL-2.0+
@@ -33,7 +33,7 @@ if (! defined('WPINC')) {
 /**
  * Currently plugin version.
  */
-define('CIVIC_COOKIE_CONTROL_VERSION', '1.54');
+define('CIVIC_COOKIE_CONTROL_VERSION', '1.55');
 
 /**
  * The code that runs during plugin activation.

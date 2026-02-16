@@ -43,6 +43,8 @@ class CCC_Cookie_Control_Admin_Dependencies_v9
         $ccc_def_cookiecontrol_logConsent = 'false';
         $ccc_cookiecontrol_encodeCookie = 'false';
         $ccc_cookiecontrol_subDomains = 'true';
+        $ccc_cookiecontrol_ccCookie = '';
+        $ccc_cookiecontrol_secureCookie = 'false';
         $ccc_cookiecontrol_mode = 'gdpr';
         $ccc_def_cookiecontrol_wrapInnerHTML = 'false';
         $ccc_def_cookiecontrol_initialState = 'CLOSED';
@@ -183,6 +185,8 @@ class CCC_Cookie_Control_Admin_Dependencies_v9
             array(
                 'logConsent' => $ccc_def_cookiecontrol_logConsent,
                 'subDomains' => $ccc_cookiecontrol_subDomains,
+                'ccCookie' => $ccc_cookiecontrol_ccCookie,
+                'secureCookie' => $ccc_cookiecontrol_secureCookie,
                 'encodeCookie' => $ccc_cookiecontrol_encodeCookie,
                 'mode' => $ccc_cookiecontrol_mode,
                 'notifyOnce' => $ccc_def_cookiecontrol_notifyOnce,
@@ -366,6 +370,8 @@ class CCC_Cookie_Control_Admin_Dependencies_v9
         $input['logConsent']   = isset($input['logConsent']) ?  wp_filter_nohtml_kses($input['logConsent']) : $ccc_options_defaults['logConsent'];
         $input['encodeCookie']   = isset($input['encodeCookie']) ?  wp_filter_nohtml_kses($input['encodeCookie']) : $ccc_options_defaults['encodeCookie'];
         $input['subDomains']   = isset($input['subDomains']) ?  wp_filter_nohtml_kses($input['subDomains']) : $ccc_options_defaults['subDomains'];
+        $input['ccCookie']   = (isset($input['ccCookie']) && trim($input['ccCookie']) !== '') ?  wp_filter_nohtml_kses(trim($input['ccCookie'])) : $ccc_options_defaults['ccCookie'];
+        $input['secureCookie']   = isset($input['secureCookie']) ?  wp_filter_nohtml_kses($input['secureCookie']) : $ccc_options_defaults['secureCookie'];
         $input['notifyOnce']   = isset($input['notifyOnce']) ?  wp_filter_nohtml_kses($input['notifyOnce']) : $ccc_options_defaults['notifyOnce'];
         $input['position']     = isset($input['position']) ?  wp_filter_nohtml_kses($input['position']) : $ccc_options_defaults['position'];
         $input['theme']        = isset($input['theme']) ?  wp_filter_nohtml_kses($input['theme']) : $ccc_options_defaults['theme'];
@@ -668,6 +674,10 @@ class CCC_Cookie_Control_Admin_Dependencies_v9
                     closeStyle: '<?php echo esc_html($ccc_cookiecontrol_settings['closeStyle']); ?>',
                     consentCookieExpiry: <?php echo !empty($ccc_cookiecontrol_settings['expiry']) ? esc_html($ccc_cookiecontrol_settings['expiry']) : '0'; ?>,
                     subDomains: <?php echo isset($ccc_cookiecontrol_settings['subDomains']) ?  esc_html($ccc_cookiecontrol_settings['subDomains']) : 'true'; ?>,
+                    <?php if (isset($ccc_cookiecontrol_settings['ccCookie']) && $ccc_cookiecontrol_settings['ccCookie'] !== ''): ?>
+                        ccCookie: '<?php echo esc_html($ccc_cookiecontrol_settings['ccCookie']); ?>',
+                    <?php endif; ?>
+                    secureCookie: <?php echo isset($ccc_cookiecontrol_settings['secureCookie']) ?  esc_html($ccc_cookiecontrol_settings['secureCookie']) : 'false'; ?>,
                     mode: '<?php echo isset($ccc_cookiecontrol_settings['mode']) ?  esc_html($ccc_cookiecontrol_settings['mode']) : 'gdpr'; ?>',
                     rejectButton: <?php echo isset($ccc_cookiecontrol_settings['rejectButton']) ?  esc_html($ccc_cookiecontrol_settings['rejectButton']) : 'false'; ?>,
                     settingsStyle: '<?php echo isset($ccc_cookiecontrol_settings['settingsStyle']) ?  esc_html($ccc_cookiecontrol_settings['settingsStyle']) : 'button'; ?>',
@@ -832,7 +842,7 @@ class CCC_Cookie_Control_Admin_Dependencies_v9
                     endif; ?>
 
                     <?php
-                    $necessaryCookiesVal = "'wordpress_*','wordpress_logged_in_*','CookieControl','wp_consent_*',";
+                    $necessaryCookiesVal = "'wordpress_*','wordpress_logged_in_*','wp_consent_*',";
                     ?>
                     <?php if (isset($ccc_cookiecontrol_settings['necessaryCookies']) && is_array($ccc_cookiecontrol_settings['necessaryCookies']) && count($ccc_cookiecontrol_settings['necessaryCookies']) > 0 && ! empty($ccc_cookiecontrol_settings['necessaryCookies'])) : ?>
                         <?php
